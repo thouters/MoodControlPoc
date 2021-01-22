@@ -112,7 +112,7 @@ void statusbar_setup( void )
     lv_style_init(&statusbarstyle[ STATUSBAR_STYLE_NORMAL ] );
     lv_style_set_radius(&statusbarstyle[ STATUSBAR_STYLE_NORMAL ], LV_OBJ_PART_MAIN, 0);
     lv_style_set_bg_color(&statusbarstyle[ STATUSBAR_STYLE_NORMAL ], LV_OBJ_PART_MAIN, LV_COLOR_WHITE );
-    lv_style_set_bg_opa(&statusbarstyle[ STATUSBAR_STYLE_NORMAL ], LV_OBJ_PART_MAIN, LV_OPA_20);
+    lv_style_set_bg_opa(&statusbarstyle[ STATUSBAR_STYLE_NORMAL ], LV_OBJ_PART_MAIN, LV_OPA_0);
     lv_style_set_border_width(&statusbarstyle[ STATUSBAR_STYLE_NORMAL ], LV_OBJ_PART_MAIN, 0);
     lv_style_set_text_color(&statusbarstyle[ STATUSBAR_STYLE_NORMAL ], LV_OBJ_PART_MAIN, LV_COLOR_WHITE);
     lv_style_set_image_recolor(&statusbarstyle[ STATUSBAR_STYLE_NORMAL ], LV_OBJ_PART_MAIN, LV_COLOR_WHITE);
@@ -163,6 +163,7 @@ void statusbar_setup( void )
     for( int i = 0 ; i < STATUSBAR_NUM ; i++ ) {
         if ( statusicon[i].symbol == NULL ) {
             statusicon[i].icon = lv_label_create( statusbar, NULL);
+            lv_obj_set_hidden(statusicon[i].icon, true );
             lv_label_set_text( statusicon[i].icon, "100%" );
         }
         else {
@@ -232,6 +233,8 @@ void statusbar_setup( void )
     lv_label_set_text( statusbar_stepcounterlabel, "0");
     lv_obj_align( statusbar_stepcounterlabel, statusbar, LV_ALIGN_IN_LEFT_MID, 5, 0 );
 
+    lv_obj_set_hidden(statusbar_stepcounterlabel, true );
+
     lv_obj_t *statusbar_volume_cont = lv_obj_create( statusbar, NULL );
     lv_obj_add_style( statusbar_volume_cont, LV_OBJ_PART_MAIN, &style );
     lv_obj_set_size( statusbar_volume_cont, lv_disp_get_hor_res( NULL ) , 36 );
@@ -249,6 +252,8 @@ void statusbar_setup( void )
     lv_obj_set_event_cb( statusbar_sound_icon, statusbar_sound_event_cb );
     lv_img_set_src( statusbar_sound_icon, &sound_32px );
     lv_obj_align( statusbar_sound_icon, statusbar_volume_cont, LV_ALIGN_IN_LEFT_MID, 15, 0 );
+ 
+    lv_obj_set_hidden( statusbar_sound_icon, true );
 
     lv_obj_t *statusbar_brightness_cont = lv_obj_create( statusbar, NULL );
     lv_obj_add_style( statusbar_brightness_cont, LV_OBJ_PART_MAIN, &style );
@@ -635,8 +640,8 @@ void statusbar_event( lv_obj_t * statusbar, lv_event_t event ) {
                 expand = false;
             } 
             else {
-                statusbar_expand( true );
-                expand = true;
+//                statusbar_expand( true );
+//                expand = true;
             }
         default:
             break;
@@ -656,7 +661,7 @@ void statusbar_expand( bool expand ) {
     } 
     else {
         lv_obj_set_height( statusbar, STATUSBAR_HEIGHT );
-        lv_style_set_bg_opa(&statusbarstyle[ STATUSBAR_STYLE_NORMAL ], LV_OBJ_PART_MAIN, LV_OPA_20);
+        lv_style_set_bg_opa(&statusbarstyle[ STATUSBAR_STYLE_NORMAL ], LV_OBJ_PART_MAIN, LV_OPA_0);
         lv_obj_reset_style_list( statusbar, LV_OBJ_PART_MAIN );
         lv_obj_add_style( statusbar, LV_OBJ_PART_MAIN, &statusbarstyle[ STATUSBAR_STYLE_NORMAL ] );
 

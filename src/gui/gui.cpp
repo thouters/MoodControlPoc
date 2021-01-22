@@ -63,12 +63,12 @@ void gui_setup( void )
     lv_obj_align( img_bin, NULL, LV_ALIGN_CENTER, 0, 0 );
     mainbar_setup();
     /* add the four mainbar screens */
-    main_tile_setup();
-    app_tile_setup();
+    //main_tile_setup();
+    //app_tile_setup();
     note_tile_setup();
-    setup_tile_setup();
+    //setup_tile_setup();
 
-    /* add setup */
+    /* add setup 
     battery_settings_tile_setup();
     display_settings_tile_setup();
     move_settings_tile_setup();
@@ -78,11 +78,11 @@ void gui_setup( void )
     update_tile_setup();
     utilities_tile_setup();
     sound_settings_tile_setup();
-
+    */
     statusbar_setup();
     lv_disp_trig_activity( NULL );
 
-    gui_set_background_image( display_get_background_image() );
+    gui_set_background_image( 4);//display_get_background_image() );
 
     keyboard_setup();
     num_keyboard_setup();

@@ -42,6 +42,7 @@
 #include "hardware/framebuffer.h"
 #include "hardware/callback.h"
 
+/*
 #include "app/weather/weather.h"
 #include "app/stopwatch/stopwatch_app.h"
 #include "app/alarm_clock/alarm_clock.h"
@@ -52,6 +53,7 @@
 #include "app/fx_rates/fx_rates.h"
 #include "app/powermeter/powermeter_app.h"
 #include "app/FindPhone/FindPhone.h"
+*/
 
 TTGOClass *ttgo = TTGOClass::getWatch();
 
@@ -98,7 +100,7 @@ void setup()
 
     /*
      * add apps and widgets here!!!
-     */
+
     weather_app_setup();
     stopwatch_app_setup();
     alarm_clock_setup();
@@ -108,10 +110,12 @@ void setup()
     IRController_setup();
     fxrates_app_setup();
     powermeter_app_setup();
-	FindPhone_setup();
+     */
   	/*
+	FindPhone_setup();
      *
      */
+wifictl_set_autoon( true) ;
     if ( wifictl_get_autoon() && ( pmu_is_charging() || pmu_is_vbus_plug() || ( pmu_get_battery_voltage() > 3400) ) )
         wifictl_on();
 

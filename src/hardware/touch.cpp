@@ -155,7 +155,7 @@ static bool touch_read(lv_indev_drv_t * drv, lv_indev_data_t*data) {
                 touch_lock_give();
             }
         } else {
-            log_i("touched @ %d,%d %d", data->point.x, data->point.y, data->state );
+//            log_i("touched @ %d,%d %d", data->point.x, data->point.y, data->state );
         }
     } else {
         data->state = LV_INDEV_STATE_REL;
